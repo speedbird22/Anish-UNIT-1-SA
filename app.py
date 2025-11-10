@@ -1,10 +1,10 @@
 import streamlit as st
-from ultralytics import YOLO
+import torch
 from PIL import Image
 import pandas as pd
 
-# Load YOLOv5 model using Ultralytics API
-model = YOLO('best.pt')
+# Load YOLOv5 model
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt', source='github')
 
 # Bin color mapping (India standard)
 bin_map = {
@@ -32,7 +32,7 @@ if uploaded_file:
 
     # Run inference
     results = model(image)
-    labels = results[0].to_pandas()
+    labels = results.pandas().xyxy[0]
 
     if not labels.empty:
         cls_name = labels.iloc[0]['name']
