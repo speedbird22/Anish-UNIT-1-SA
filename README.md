@@ -10,13 +10,9 @@
   <strong>Turning trash into treasure, one photo at a time.</strong>
 </p>
 
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue?logo=python&logoColor=white)](https://python.org)
-[![YOLOv5](https://img.shields.io/badge/YOLOv5-Ultralytics-red?logo=ultralytics)](https://github.com/ultralytics/yolov5)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.30%2B-red?logo=streamlit)](https://streamlit.io)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 <br>
-<br>
-<a href="https://ecosort-ai.streamlit.app"><b>🚀 LIVE DEMO</b></a> • <a href="#-demo-video">Watch Demo</a> • <a href="#-installation">Quick Start</a>
+<a href="https://ecosort-ai.streamlit.app"><b>🚀 LIVE DEMO</b></a> • 
 
 </div>
 
