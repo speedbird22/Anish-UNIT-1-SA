@@ -1,7 +1,7 @@
 streamlit
-torch
+ultralytics==8.0.198
+torch==2.1.0
 Pillow
-ultralytics
 opencv-python-headless
 tqdm
 seaborn
