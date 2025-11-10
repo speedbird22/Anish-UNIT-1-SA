@@ -2,9 +2,9 @@
 
 <div align="center">
 
-<img src="https://github.com/your-username/your-repo/blob/main/assets/banner.png?raw=true" alt="EcoSort AI Banner" width="100%"/>
 
-<h1>♻️ EcoSort AI – India's Smart Waste Classifier</h1>
+
+<h1>♻️ EcoSort AI </h1>
 
 <p>
   <strong>Turning trash into treasure, one photo at a time.</strong>
@@ -12,7 +12,7 @@
 
 
 <br>
-<a href="https://ecosort-ai.streamlit.app"><b>🚀 LIVE DEMO</b></a> • 
+<a href="[https://ecosort-ai.streamlit.app](https://anish-unit-1-sa-iercbrftcz6arj9gy6pdep.streamlit.app/)"><b>🚀 LIVE DEMO</b></a> 
 
 </div>
 
