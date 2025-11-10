@@ -12,7 +12,7 @@
 
 
 <br>
-<a href="https://ecosort-ai.streamlit.app](https://anish-unit-1-sa-iercbrftcz6arj9gy6pdep.streamlit.app/"><b>🚀 LIVE DEMO</b></a> 
+<a href="https://ecosort-ai.streamlit.app](https://anish-unit-1-sa-iercbrftcz6arj9gy6pdep.streamlit.app/"><b>(https://anish-unit-1-sa-iercbrftcz6arj9gy6pdep.streamlit.app/)</b></a> 
 
 </div>
 
