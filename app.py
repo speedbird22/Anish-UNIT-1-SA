@@ -87,7 +87,7 @@ st.markdown("""
 # MAIN UI
 # ============================
 st.markdown("<h1 class='title'>♻️ EcoSort AI</h1>", unsafe_allow_html=True)
-st.markdown("<p class='subtitle'>India's Smartest Waste Classifier – Powered by AI</p>", unsafe_allow_html=True)
+
 
 # Upload Section
 with st.container():
@@ -170,9 +170,5 @@ if uploaded_file:
 # ============================
 st.markdown("---")
 st.markdown("""
-<div class='footer'>
-    <p>Made with ❤️ in India using <b>YOLOv5</b> + <b>Streamlit</b> | 
-    <a href='https://github.com' style='color:#FFD700;'>Open Source</a></p>
-    <p>Helping India go <span style='color:#00ff88;'>Zero Waste</span> ♻️</p>
-</div>
+
 """, unsafe_allow_html=True)
