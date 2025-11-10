@@ -1,7 +1,7 @@
 streamlit
-torch==1.13.1
+torch
 Pillow
-opencv-python-headless==4.8.1.78
+ultralytics
+opencv-python-headless
 tqdm
 seaborn
-git+https://github.com/ultralytics/yolov5.git
