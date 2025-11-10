@@ -1,29 +1,29 @@
 import streamlit as st
-import torch
+from ultralytics import YOLO
 from PIL import Image
 import pandas as pd
 
-# Load YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt', source='github')
+# Load YOLOv5 model using Ultralytics API
+model = YOLO('best.pt')
 
 # Bin color mapping (India standard)
 bin_map = {
-    'battery': 'Red',
-    'biological': 'Green',
-    'cardboard': 'Blue',
-    'clothes': 'Green',
-    'glass': 'Blue',
-    'metal': 'Blue',
-    'paper': 'Blue',
-    'plastic': 'Blue',
-    'shoes': 'Green',
-    'trash': 'Red'
+    'battery': '🔴 Red',
+    'biological': '🟢 Green',
+    'cardboard': '🔵 Blue',
+    'clothes': '🟢 Green',
+    'glass': '🔵 Blue',
+    'metal': '🔵 Blue',
+    'paper': '🔵 Blue',
+    'plastic': '🔵 Blue',
+    'shoes': '🟢 Green',
+    'trash': '🔴 Red'
 }
 
 # Streamlit UI setup
-st.set_page_config(page_title="Smart Waste Classifier", page_icon="♻️", layout="centered")
+st.set_page_config(page_title="♻️ Smart Waste Classifier", page_icon="🗑️", layout="centered")
 st.markdown("<h1 style='text-align: center;'>♻️ Smart Waste Classifier</h1>", unsafe_allow_html=True)
-st.markdown("<p style='text-align: center;'>Upload an image to detect the waste type and get bin color guidance.</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center;'>📸 Upload an image to detect the waste type and get bin color guidance.</p>", unsafe_allow_html=True)
 
 uploaded_file = st.file_uploader("📤 Upload an image", type=["jpg", "jpeg", "png"])
 if uploaded_file:
@@ -32,24 +32,24 @@ if uploaded_file:
 
     # Run inference
     results = model(image)
-    labels = results.pandas().xyxy[0]
+    labels = results[0].to_pandas()
 
     if not labels.empty:
         cls_name = labels.iloc[0]['name']
         confidence = round(labels.iloc[0]['confidence'] * 100, 2)
-        bin_color = bin_map.get(cls_name, "Unknown")
+        bin_color = bin_map.get(cls_name, "❓ Unknown")
 
         st.markdown("### 🧾 Prediction Summary")
-        st.success(f"**Detected Waste Type:** {cls_name}")
-        st.info(f"**Confidence Score:** {confidence}%")
-        st.warning(f"**Recommended Bin Color:** {bin_color}")
+        st.success(f"🗂️ **Detected Waste Type:** `{cls_name}`")
+        st.info(f"📊 **Confidence Score:** `{confidence}%`")
+        st.warning(f"🗑️ **Recommended Bin Color:** `{bin_color}`")
 
         # Optional: show full table of predictions
         with st.expander("🔍 See all detected objects"):
             st.dataframe(labels[['name', 'confidence', 'class']])
     else:
-        st.error("🚫 No waste item detected. Try another image.")
+        st.error("🚫 No waste item detected. Please try another image.")
 
 # Footer
 st.markdown("---")
-st.markdown("<p style='text-align: center; font-size: 12px;'>Made with ❤️ using YOLOv5 and Streamlit</p>", unsafe_allow_html=True)
+st.markdown("<p style='text-align: center; font-size: 12px;'>🛠️ Made with ❤️ using YOLOv5 and Streamlit</p>", unsafe_allow_html=True)
