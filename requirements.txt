@@ -4,3 +4,4 @@ Pillow
 opencv-python-headless==4.8.1.78
 tqdm
 seaborn
+git+https://github.com/ultralytics/yolov5.git
