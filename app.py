@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 import os
 
-# Load model
+# Load YOLOv5 model
 @st.cache_resource
 def load_model():
     return torch.hub.load('ultralytics/yolov5', 'custom', path='best.pt', force_reload=True)
@@ -14,11 +14,11 @@ model = load_model()
 # Class names (must match your training)
 class_names = ['clothes', 'paper', 'glass', 'battery', 'plastic', 'shoes', 'trash', 'cardboard', 'biological', 'metal']
 
-# Title
+# App title
 st.title("🗑️ Trash Classifier")
-st.write("Upload an image of trash and get its classification.")
+st.write("Upload an image of trash and get its classification using YOLOv5.")
 
-# Upload
+# Upload image
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
 
 if uploaded_file:
@@ -27,8 +27,9 @@ if uploaded_file:
 
     # Run inference
     results = model(image)
+    results.render()  # populates results.ims with PIL images
 
-    # Parse results
+    # Parse prediction
     pred = results.pandas().xyxy[0]
     if pred.empty:
         st.warning("No object detected.")
@@ -40,5 +41,4 @@ if uploaded_file:
         st.success(f"🧠 Prediction: **{cls_name}** ({conf:.2f} confidence)")
 
         # Show annotated image
-        results.render()  # updates results.imgs
-        st.image(Image.fromarray(results.imgs[0]), caption="Detected", use_column_width=True)
+        st.image(results.ims[0], caption="Detected", use_column_width=True)
