@@ -1,7 +1,6 @@
 streamlit
 torch
-Pillow
-ultralytics
+torchvision
 opencv-python-headless
-tqdm
-seaborn
+pillow
+pandas
