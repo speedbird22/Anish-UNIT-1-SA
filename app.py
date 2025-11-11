@@ -2,7 +2,6 @@ import streamlit as st
 import torch
 from PIL import Image
 import numpy as np
-import os
 
 # Load YOLOv5 model
 @st.cache_resource
@@ -13,6 +12,20 @@ model = load_model()
 
 # Class names (must match your training)
 class_names = ['clothes', 'paper', 'glass', 'battery', 'plastic', 'shoes', 'trash', 'cardboard', 'biological', 'metal']
+
+# Dustbin color mapping (India)
+dustbin_map = {
+    'clothes': '🔵 Blue (Recyclable)',
+    'paper': '🟢 Green (Biodegradable)',
+    'glass': '🔵 Blue (Recyclable)',
+    'battery': '🔴 Red (Hazardous)',
+    'plastic': '🔵 Blue (Recyclable)',
+    'shoes': '🔵 Blue (Recyclable)',
+    'trash': '⚫ Black (General Waste)',
+    'cardboard': '🟢 Green (Biodegradable)',
+    'biological': '🟢 Green (Biodegradable)',
+    'metal': '🔵 Blue (Recyclable)'
+}
 
 # App title
 st.title("🗑️ Trash Classifier")
@@ -27,7 +40,7 @@ if uploaded_file:
 
     # Run inference
     results = model(image)
-    results.render()  # populates results.ims with PIL images
+    results.render()
 
     # Parse prediction
     pred = results.pandas().xyxy[0]
@@ -42,3 +55,7 @@ if uploaded_file:
 
         # Show annotated image
         st.image(results.ims[0], caption="Detected", use_column_width=True)
+
+        # Suggest dustbin color
+        bin_color = dustbin_map.get(cls_name, "⚫ Black (General Waste)")
+        st.markdown(f"### 🗂 Suggested Dustbin: {bin_color}")
